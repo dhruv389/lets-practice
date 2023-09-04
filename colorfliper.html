@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating Card Memory Game</title>
+    <style>
+        /* styles.css */
+        body {
+            font-family: 'Inconsolata', monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .con {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box1 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 1rem;
+            max-width: 24rem;
+            border-radius: 15px;
+            background-color: rgba(215, 224, 232, 0.683);
+            box-shadow: 0px 5px 25px;
+            padding: 1rem;
+        }
+        .card {
+            height: 5rem;
+            width: 5rem;
+            background-color: #e9aaaa;
+            border-radius: 15px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+        .card img {
+            height: 100%;
+            border-radius: 15px;
+            width: 100%;
+            backface-visibility: hidden;
+        }
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="con">
+        <div class="box1">
+            <div class="card"><img src="clay-leconey-4FfvkEcSA-4-unsplash (1).jpg" alt=""></div>
+            <div class="card"><img src="josefin-WS5yjFjycNY-unsplash.jpg"></div>
+            <div class="card"><img src="josefin-WS5yjFjycNY-unsplash.jpg"></div>
+            <div class="card"><img src="clay-leconey-4FfvkEcSA-4-unsplash (1).jpg"></div>
+            <div class="card"><img src="tumblr_o63lwpgD3h1uu4ka5o1_1280.jpg"></div>
+            <div class="card"><img src="s5.jpg"></div>
+            <div class="card"><img src="tumblr_o63lwpgD3h1uu4ka5o1_1280.jpg"></div>
+            <div class="card"><img src="s5.jpg"></div>
+            <div class="card"><img src="s2.jpg"></div>
+        </div>
+    </div>
+    <script>
+        const cards = document.querySelectorAll('.card');
+        let flippedCards = [];
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                if (flippedCards.length < 2 && !flippedCards.includes(card)) {
+                    card.classList.add('flipped');
+                    flippedCards.push(card);
+
+                    if (flippedCards.length === 2) {
+                        setTimeout(() => {
+                            if (flippedCards[0].querySelector('img').src === flippedCards[1].querySelector('img').src) {
+                                flippedCards.forEach(card => card.classList.add('matched'));
+                            } else {
+                                flippedCards.forEach(card => card.classList.remove('flipped'));
+                            }
+                            flippedCards = [];
+                        }, 1000);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
