@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow: hidden;
+      height: 100vh;
+      width: 100%;
+      background-color: black;
+    }
+
+    .cut {
+      height: 120px;
+      width: 120px;
+      position: relative;
+    }
+
+    .cir {
+      top: -50%;
+      left: -50%;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+    background-color: rgb(85, 136, 99);
+      border-radius: 50%;
+    }
+    .con{
+height:100%;
+width:100%;
+filter:blur(80px);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="con">
+    <div class="cut">
+      <div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+      <div class="cir"></div><div class="cir"></div>
+   
+    </div>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+  <script>
+    // Wait for the DOM content to be loaded before attaching the event listener
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.addEventListener("mousemove", e => {
+        gsap.to(".cir", {
+          x: e.clientX,
+          y: e.clientY,
+          stagger:-0.0133,
+        })
+      })
+    });
+  </script>
+</body>
+</html>
